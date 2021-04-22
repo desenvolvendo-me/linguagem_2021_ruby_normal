@@ -1,28 +1,30 @@
-def bubbleSort(arr)
-  len = arr.length
-  return arr if len <= 1
+class AlgorithmsSorting
 
-  loop do
-    swapped = false
+  def bubble_sort(array)
+    length = array.length
+    return array if length <= 1
 
-    (len-1).times do |i|
-      if arr[i] > arr[i+1]
-        exp = arr[i]
-        arr[i] = arr[i+1]
-        arr[i+1] = exp
+    loop do
+      swapped = false
+
+      (length - 1).times do |i|
+        next unless array[i] > array[i + 1]
+
+        exp = array[i]
+        array[i] = array[i + 1]
+        array[i + 1] = exp
 
         swapped = true
       end
+
+      break unless swapped
     end
 
-    break if not swapped
+    array
   end
-
-  arr
+  
 end
 
-arr = [64, 34, 25, 12, 22, 11, 90]
+array = [64, 34, 25, 12, 22, 11, 90]
 
-bubbleSort(arr)
-
-p arr
+p AlgorithmsSorting.new.bubble_sort(array)

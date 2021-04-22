@@ -1,21 +1,24 @@
-def missingCharacter(setence)
-  list = [false] * 26
-  letters = ('a'..'z').to_a
+class ProblemsString
 
-  setence = setence.downcase.split('')
+  def missing(sentence)
+    list = [false] * 26
+    letters = ('a'..'z').to_a
 
-  setence.each do |chars|
-    next if chars == ' '
+    sentence_split = sentence.downcase.split('')
 
-    index_letter = letters.find_index(chars)
-    if index_letter
-      list[index_letter] = true
+    sentence_split.each do |chars|
+      next if chars == ' '
+
+      index_letter = letters.find_index(chars)
+      if index_letter
+        list[index_letter] = true
+      end
     end
-  end
 
-  list.include?(false)
+    list.include?(false)
+  end
 end
 
-setence = 'The quick brown fox jumps over the little lazy dog'
+sentence = 'The quick brown fox jumps over the little lazy dog'
 
-puts missingCharacter(setence) ? "This setence not is pangram" : "This setence is pangram"
+p ProblemsString.new.missing(sentence) ? "This sentence not is pangram" : "This sentence is pangram"

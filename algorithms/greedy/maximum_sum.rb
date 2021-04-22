@@ -1,20 +1,20 @@
-def maximunSum(arr)
-  len = arr.size
+class AlgorithmsGreedy
 
-  arr.each_with_index do |item, index|
-    if item < 0
-      arr[index] = item.abs
+  def maximum_sum(array)
+    array.each_with_index do |item, index|
+      array[index] = item.abs if item.negative?
     end
+
+    sum = 0
+    array.each do |item|
+      sum += item
+    end
+
+    sum
   end
 
-  sum = 0
-  arr.each do |item|
-    sum += item
-  end
-
-  sum
 end
 
-arr = [-2, 0, 5, -1, 2]
+array = [-2, 0, 5, -1, 2]
 
-puts maximunSum(arr)
+puts AlgorithmsGreedy.new.maximum_sum(array)

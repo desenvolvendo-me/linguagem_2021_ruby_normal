@@ -1,33 +1,32 @@
-def jumpSearch(arr, x)
-  len = arr.length
-  step = Math.sqrt(len)
+class AlgorithmsSearching
 
-  prev = 0
+  def jump_search(array, x)
+    length = array.length
+    step = Math.sqrt(length)
 
-  while arr[[step,len].min] < x do
-    prev = step
+    prev = 0
 
-    step += Math.sqrt(len)
+    while array[[step, length].min] < x
+      prev = step
+      step += Math.sqrt(length)
+      return -1 if prev >= length
+    end
 
-    return -1 if prev >= len
+    while array[prev] < x
+      prev += 1
+      return -1 if prev == [step, length].min
+    end
+
+    return prev.to_i if array[prev].eql? x
+
+    -1
   end
 
-  while arr[prev] < x do
-    prev += 1
-
-    return -1 if prev == [step, len].min
-  end
-
-  if arr[prev] == x
-    return prev.to_i
-  end
-
-  return -1
 end
 
-arr = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610]
+array = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610]
 x = 50
 
-result = jumpSearch(arr, x)
+result = AlgorithmsSearching.new.jump_search(array, x)
 
-puts result < 0 ? "Number '#{x}' is not present in array" : "Number '#{x}' is at index #{result}"
+puts result.negative? ? "Number '#{x}' is not present in array" : "Number '#{x}' is at index #{result}"

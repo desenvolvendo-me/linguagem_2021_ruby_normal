@@ -1,29 +1,26 @@
-def mergeSort(arr)
-  return arr if arr.length == 1
-  middle = arr.length / 2
+class AlgorithmsSorting
 
-  left = arr[0...middle]
-  right = arr[middle..-1]
+  def merge_sort(array)
+    return array if array.length.eql? 1
 
-  sorted_left = mergeSort(left)
-  sorted_right =  mergeSort(right)
+    middle = array.length / 2
 
-  merge(sorted_left, sorted_right)
-end
+    left = array[0...middle]
+    right = array[middle..-1]
 
+    sorted_left = merge_sort(left)
+    sorted_right = merge_sort(right)
 
-def merge(left, right)
-  result = []
+    result = []
 
-  until left.length == 0 || right.length == 0 do
-    result << (left.first <= right.first ? left.shift : right.shift)
+    until sorted_left.length.zero? || sorted_right.length.zero? do
+      result << (sorted_left.first <= sorted_right.first ? sorted_left.shift : sorted_right.shift)
+    end
+
+    result + sorted_left + sorted_right
   end
-
-  result + left + right
 end
 
-arr = [12, 11, 13, 5, 6, 7]
+array = [12, 11, 13, 5, 6, 7]
 
-sorted_arr = mergeSort(arr)
-
-p sorted_arr
+p AlgorithmsSorting.new.merge_sort(array)

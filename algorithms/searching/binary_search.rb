@@ -1,30 +1,30 @@
-def binarySearch(arr, left, right, x)
-  if right >= left
-    mid = left + (right - left) / 2
-    mid = mid.floor
+class AlgorithmsSearching
 
-    if arr[mid] == x
-      return mid
+  def binary_search(array, left, right, x)
+    if right >= left
+      mid = left + (right - left) / 2
+      mid = mid.floor
 
-    elsif arr[mid] > x
-      right = mid - 1
-      return binarySearch(arr, left, right, x)
+      if array[mid] == x
+        mid
+      elsif array[mid] > x
+        right = mid - 1
+        binary_search(array, left, right, x)
+      else
+        left = mid + 1
+        binary_search(array, left, right, x)
+      end
 
     else
-      left = mid + 1
-      return binarySearch(arr, left, right, x)
+      -1
     end
-
-  else
-    return -1
   end
+
 end
 
-arr = [1, 3, 4, 10, 40, 55, 90]
+array = [1, 3, 4, 10, 40, 55, 90]
 x = 90
-n = arr.length - 1
+n = array.length - 1
 
-result = binarySearch(arr, 0, n, x)
-puts result < 0 ?
-       "Element is not present in array" :
-       "Element is present at index #{result}"
+result = AlgorithmsSearching.new.binary_search(array, 0, n, x)
+p result.negative? ? 'Element is not present in array' : "Element is present at index #{result}"

@@ -1,4 +1,5 @@
 class ProblemsArray
+
   def find(array)
     positions = { first: 0, second: 0, third: 0 }
 
@@ -18,6 +19,7 @@ class ProblemsArray
 
     positions
   end
+
 end
 
 array = [12, 13, 1, 10, 34, 1]
